@@ -2,28 +2,31 @@ import Ember from 'ember';
 
 var catalogCollection = Ember.ArrayProxy.extend(Ember.SortableMixin, {
 	sortProperties: ['itemId'],
-	sortAscending: false,
+	sortAscending: true,
 	content: [],
 });
-
+var cartCollection = Ember.ArrayProxy.extend(Ember.SortableMixin, {
+	sortProperties: ['itemId'],
+	sortAscending: true,
+	content: [],
+});
 	
 
 export default Ember.Controller.extend(
 {
 	catalogs: catalogCollection.create(),
+	carts: cartCollection.create(),
 	searchField: '',
 	actions:
 	{
 		search: function()
 		{
-			console.log("2");
 			this.get('catalogs').content.clear();
 			this.store.unloadAll('catalog');  //empty catalog
 			this.send('getCatalog', this.get('searchField'));
 		},
 		getCatalog: function(searchVar)
 		{
-			console.log("3");
 			searchVar = "this will be used later";
 			var catalogs = this.get('catalogs');
 			var t= this;
@@ -61,9 +64,39 @@ export default Ember.Controller.extend(
 				sellDate: "2015-11-11",
 				qty: 0,
 			});
+			var tmp4 = t.store.createRecord('catalog',
+			{
+				name: "UNCANNY X-MEN #1",
+				price: "3.99",
+				catalogId: "201510",
+				itemId: "OCT15076",
+				CatalogCode: "1",
+				orderDate: "2015-11-02",
+				sellDate: "2015-12-02",
+				qty: 0,
+			});
 			catalogs.pushObject(tmp1);
 			catalogs.pushObject(tmp2);
 			catalogs.pushObject(tmp3);
+			catalogs.pushObject(tmp4);
+		},
+		placeOrder: function()
+		{
+/*			var carts = this.get('carts');
+			var t= this;
+			if(this.get(qty) >0)
+			{
+				var tmp= t.store.createRecord('cart',
+				{
+					name: this.get(name),
+					price: this.get(price),
+					catalogId: this.get(catalogId),
+					itemId: this.get(itemId),
+					qty: this.get(qty),
+				});
+				carts.pushObject(tmp);
+			}
+*/
 		}
 	}
 	
