@@ -27,7 +27,7 @@ export default Ember.Controller.extend(
 		},
 		getCatalog: function(searchVar)
 		{
-			searchVar = "this will be used later";
+			searchVar = "this will be used later to search the DB";
 			var catalogs = this.get('catalogs');
 			var t= this;
 
@@ -82,21 +82,28 @@ export default Ember.Controller.extend(
 		},
 		placeOrder: function()
 		{
-/*			var carts = this.get('carts');
+			var catalogs = this.get('catalogs');
+			var carts = this.get('carts');
 			var t= this;
-			if(this.get(qty) >0)
+
+			catalogs.forEach(function(item)
 			{
-				var tmp= t.store.createRecord('cart',
-				{
-					name: this.get(name),
-					price: this.get(price),
-					catalogId: this.get(catalogId),
-					itemId: this.get(itemId),
-					qty: this.get(qty),
-				});
-				carts.pushObject(tmp);
-			}
-*/
+//			if(item.get('qty') >0 )
+//			{
+					var tmp= t.store.createRecord('cart',
+					{
+						name: item.get('name'),
+						price: item.get('price'),
+						catalogId: item.get('catalogId'),
+						itemId: item.get('itemId'),
+						qty: item.get('qty'),
+//						item.get
+					});
+					carts.pushObject(tmp);
+//:				}
+			});
+	
+
 		}
 	}
 	

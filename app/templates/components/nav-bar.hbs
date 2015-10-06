@@ -1,0 +1,18 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Comic Express</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        {{#link-to "order" tagName="li"}}<a href="/order">Place Order</a>{{/link-to}}
+  		{{#link-to "editCart" tagName="li"}}<a href="/editCart">Edit Cart</a>{{/link-to}}
+        {{#link-to "auth" tagName="li"}}<a href="/auth">Auth</a>{{/link-to}}
+  
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
