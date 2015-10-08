@@ -1,5 +1,5 @@
 import Ember from 'ember';
-
+/*
 var catalogCollection = Ember.ArrayProxy.extend(Ember.SortableMixin, {
 	sortProperties: ['itemId'],
 	sortAscending: true,
@@ -11,10 +11,10 @@ var cartCollection = Ember.ArrayProxy.extend(Ember.SortableMixin, {
 	content: [],
 });
 	
-
+*/
 export default Ember.Controller.extend(
 {
-	catalogs: catalogCollection.create(),
+/*	catalogs: catalogCollection.create(),
 	carts: cartCollection.create(),
 	searchField: '',
 	actions:
@@ -106,5 +106,6 @@ export default Ember.Controller.extend(
 
 		}
 	}
+	*/
 	
 });
