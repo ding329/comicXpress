@@ -1,4 +1,4 @@
-{{#if LoggedIn}} {{! Display user name and logout button}}
+{{#if isLoggedIn}} {{! Display user name and logout button}}
 	Hello {{username}}
 	<button type="button" class="btn btn-default" {{action 'logout'}}>Log out</button>
 {{else}} {{!Display login page}}
@@ -31,7 +31,11 @@
 			  {{input type="checkbox" checked=remember}} Remember me
 			</label>
 			<button type="button" class="btn btn-default" {{action 'login'}}>Sign in</button>
-
+		</form>
+		<form class="form-default">
+			<div class="form-group">
+				<button type="button" class="btn btn-default" {{action 'goRegister'}}>Register</button>
+			</div>
 		</form>
 	{{/if}}
 {{/if}}

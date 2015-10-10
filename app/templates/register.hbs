@@ -1,0 +1,17 @@
+<form class="form-default">
+	<div class="form-group">
+		{{input class="form-control" value=username action="register" placeholder="Username"}}
+	</div>
+	<div class="form-group">
+		{{input class="form-control" value=password action="register" placeholder="Password" type="password"}}
+	</div>
+	<div class="form-group">
+		{{input class="form-control" value=password action="register" placeholder="Store Name"}}
+	</div>
+	<div class="form-group">
+		{{input class="form-control" value=password action="register" placeholder="Email Address"}}
+	</div>
+	<button type="button" class="btn btn-default" {{action 'register'}}>Sign in</button>
+</form>
+
+{{outlet}}

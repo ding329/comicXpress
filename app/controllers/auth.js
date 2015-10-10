@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+
 	username: '',
 	loggedIn: false,
 	errorMsg: '',
@@ -14,7 +15,11 @@ export default Ember.Controller.extend({
 		logout: function(){
 			this.set('loggedIn', false);
 			this.transitionTo('auth');
+		},
+		goRegister: function(){
+			this.transitionTo('register');
 		}
 	}
+
 });
 
