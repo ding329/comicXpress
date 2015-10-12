@@ -12,13 +12,17 @@ export default Ember.Component.extend({
 //	carts: cartCollection.create(),
 	actions:
 	{
-		placeOrder: function()
+		addItem: function()
 		{
 			var catalog= this.get('catalog');
-			console.log(catalog.get('qty'));
-
-			var carts=this.get('carts');
+			console.log('add item component');
+			this.sendAction("addItem", catalog);
+			return true;
+	/*		console.log(catalog.get('qty'));
+		//	console.log(carts);
+		//	var carts=this.get('carts');
 			var t= this;
+			console.log(t.store);
 			if(catalog.get('qty') > 0)
 			{
 				var tmp1=t.store.createRecord('cart',
@@ -30,7 +34,7 @@ export default Ember.Component.extend({
 				});
 				carts.pushObject(tmp1);
 			}
-
+*/
 		}
 
 	}
