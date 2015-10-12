@@ -1,82 +1,95 @@
-
-<br>
-<br>
-<br>
-<br>
-Did you get the data?
-{{#each catalog in content}}
-	{{catalog.name}}
-{{/each}}
 <!--
-<div class="container-fluid">
-	{{#each post in content}}
-		{{forum-post post=post}}
-	{{/each}}
-</div>
-{{outlet}}
-
--->
-<!--
-<nav class="navbar navbar-default navbar-fixed-top">
-	<div class="container-fluid">
-		<div class="navbar-header">
-			<a class="navbar-brand" href="#">Order Attempt</a>
-		</div>
-		<div class="navbar-center search-field">
-			{{#bs-form formLayout="inline" action="search"}}
-				{{bs-input type="text" value=searchField placeholder="Search by item description"}}
-				<button type="submit" class="btn btn-default">
-					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-				</button>
-			{{/bs-form}}
-		</div>
-	</div>
-</nav>
-
-
 <div class="container">
-	<br>
-	<br>
-	<br>
+	{{#bs-form formLayout="inline" action="search"}}
+		{{bs-input type="text" value=SearchField action="search" placeholder="search item description"}}
+		<button type="submit" class="btn btn-default">
+			<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+		</button>
+	{{/bs-form}}
+</div>
+-->
+<div class="container-fluid">
 	<div class="row">
-		{{#each catalog in catalogs}}
-		<div class="col-md-6">
-			{{catalog.name}}
-		</div>	
-		<div class="col-md-1">
-			{{catalog.catalogId}}
+		<div class="col-md-2 sidebar">
+			<ul class="nav nav-sidebar">
+				<li class="active"><h3>Filters</h3> <span class="sr-only">(current)</span></li>
+					<li>
+						{{#bs-form formLayout="inline" action="search"}}
+							{{bs-input type="text" value=SearchField size=18 action="search" placeholder="search"}}
+							<button type="submit" class="btn btn-default">
+								<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+							</button>
+						{{/bs-form}}
+					</li>
+					<li>
+						<label class="checkbox"> {{input type="checkbox" checked=chCom}} Comic </label>
+					</li>
+					<li>
+						<label class="checkbox"> {{input type="checkbox"  checked=chMag}} Magazines </label>
+					</li>
+					<li>
+						<label class="checkbox"> {{input type="checkbox" checked=chGraphic}} Graphic Novels </label>
+					</li>
+					<li>
+						<label class="checkbox"> {{input type="checkbox" checked=chNovel}} Novels </label>
+					</li>
+					<li>
+						<label class="checkbox"> {{input type="checkbox" checked=chGame}} Games </label>
+					</li>
+					<li>
+						<label class="checkbox"> {{input type="checkbox" checked=chNoveties}} Novelties </label>
+					</li>
+					<li>
+						<label class="checkbox"> {{input type="checkbox" checked=chApparel}} Apparel </label>
+					</li>
+					<li>
+						<label class="checkbox"> {{input type="checkbox" checked=chToy}} Toys/Model </label>
+					</li>
+					<li>
+						<label class="checkbox"> {{input type="checkbox" checked=chScard}} Supplies-Cards </label>
+					</li>
+					<li>
+						<label class="checkbox"> {{input type="checkbox" checked=chScomic}} Supplies-Comic </label>
+					</li>
+					<li>
+						<label class="checkbox"> {{input type="checkbox" checked=chRetail}} Retailers Tools </label>
+					</li>
+					<li>
+						<label class="checkbox"> {{input type="checkbox" checked=chDiamond}} Diamond Publications </label>
+					</li>
+					<li>
+						<label class="checkbox"> {{input type="checkbox" checked=chPoster}} Posters/Printers </label>
+					</li>
+					<li>
+						<label class="checkbox"> {{input type="checkbox" checked=chVideo}} Video/Audio </label>
+					</li>
+			</ul>
+
 		</div>
-		<div class="col-md-1">
-			{{catalog.itemId}}
-		</div>
-		<div class="col-md-1">
-			{{catalog.orderDate}}
-		</div>
-		<div class="col-md-1">
-			{{catalog.price}}
-		</div>
-		<div class="col-md-1">
-			{{input type="checkbox" name="reoccuring" checked=reoccuring}}
-		</div>
-		<div class="col-md-1">
-			{{#bs-form formLayout="inline" action="getQty"}}
-				{{bs-input type="text" value=unknown placehold=0}}
-			{{/bs-form}}
-		</div>
-		
+		{{#each catalog in content}}
+			{{place-order catalog=catalog }}
 		{{/each}}
 	</div>
+
+
+	<div class="col-md-1">
+		<button type="button" class="btn btn-default" {{action 'placeOrder' content}}>
+			Order
+		</button>
+	</div>
+	<div class="col-md-1">
+		<button type="button" class="btn btn-default" {{action 'filterCatalog'}}>
+			Filter
+		</button>
+	</div>
+
 </div>
-
-
-
-{{#each cart in carts}}
-	{{cart.setLabel}} <br>
-{{/each}}
+<!--
+if(filtered)
+{
+	{{#each catalog in filteredCatalog}}
+		catalog.name <br>
+	{{/each}}
+}
 
 -->
-
-
-
-
-

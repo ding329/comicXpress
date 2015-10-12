@@ -1,0 +1,110 @@
+{{#with catalog}}
+
+
+<div class="container-fluid">
+	<div class="row">
+<!--		<div class="col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            	<li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
+            	<li>Comics</li>
+            	<li>Magazines</li>
+            	<li>Graphic Novels</li>
+            	<li>Novels</li>
+            	<li>Games</li>
+            	<li>Novelties</li>
+            	<li>Apparel</li>
+            	<li>Toys / Models</li>
+            	<li>Supplies-Card</li>
+            	<li>Supplies-Comic</li>
+            	<li>Retailers tools</li>
+            	<li>Diamond Publications</li>
+            	<li>Posters/Prints</li>
+            	<li>Video/Audio</li>
+          </ul>
+        </div>
+-->
+
+				<div class="col-md-3">
+					{{name}}
+				</div>
+				<div class="col-md-1">
+					{{catalogId}}
+				</div>
+				<div class="col-md-1">
+					{{itemId}}
+				</div>
+				<div class="col-md-1">
+					{{orderDate}}
+				</div>
+				<div class="col-md-1">
+					{{price}}
+				</div>
+				<div class="col-md-1">
+					{{#bs-form formLayout="inline" action="getQty"}}
+						{{bs-input type="text" size=5 value=qty }}
+					{{/bs-form}}
+				</div>
+				<div class="col-md-1">
+					<button type="button" class="btn btn-default" {{action 'placeOrder'}}>
+						Order
+					</button>
+				</div>
+		<div class="col-md-1">
+			{{input type="checkbox" name="reoccuring" checked=reoccuring}}
+
+		</div>
+	</div>
+</div>
+
+
+{{/with}}
+
+<!--
+{{#with post}}
+<div class="panel panel-default">
+	<div class="panel-heading">
+	<button type="button" class="btn btn-primary" {{action 'upvote'}}><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span> {{upvotes}}</button>
+	{{#link-to 'forum.forumpost' post.id}}{{title}}{{/link-to}} (@{{author}})</div>
+	<div class="panel-body">
+		{{content}}<br>
+	</div>
+
+</div>
+{{/with}}
+-->
+
+<!--
+<div class="container">
+	{{#each catalog in content}}
+	<div class="row">
+		
+			<div class="col-md-6">
+				{{catalog.name}}
+			</div>	
+			<div class="col-md-1">
+				{{catalog.catalogId}}
+			</div>
+			<div class="col-md-1">
+				{{catalog.itemId}}
+			</div>
+			<div class="col-md-1">
+				{{catalog.orderDate}}
+			</div>
+			<div class="col-md-1">
+				{{catalog.price}}
+
+			</div>
+				<div class="col-md-1">
+					{{input type="checkbox" name="reoccuring" checked=reoccuring}}
+				</div>
+			<div class="col-md-1">
+				{{#bs-form formLayout="inline" action="getQty"}}
+					{{bs-input type="text" value=unknown placehold=0}}
+				{{/bs-form}}
+		</div>
+		
+	</div>
+	{{/each}}
+</div>
+-->
+

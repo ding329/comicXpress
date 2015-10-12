@@ -6,9 +6,4 @@ export default DS.Model.extend({
   catalogId: DS.attr('string'),
   itemId: DS.attr('string'),
   qty: DS.attr('number'),
-  setLabel: function()
-  {
-		return this.get('catalogId') + " | " + this.get('itemId') + " | " + this.get('qty') + " | " + this.get('name') + " | " + this.get('price');
-  }.property('catalogId', 'itemId', 'qty', 'name', 'price')
-
 });
