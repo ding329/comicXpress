@@ -3,60 +3,37 @@
 
 <div class="container-fluid">
 	<div class="row">
-<!--		<div class="col-md-2 sidebar">
-          <ul class="nav nav-sidebar">
-            	<li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
-            	<li>Comics</li>
-            	<li>Magazines</li>
-            	<li>Graphic Novels</li>
-            	<li>Novels</li>
-            	<li>Games</li>
-            	<li>Novelties</li>
-            	<li>Apparel</li>
-            	<li>Toys / Models</li>
-            	<li>Supplies-Card</li>
-            	<li>Supplies-Comic</li>
-            	<li>Retailers tools</li>
-            	<li>Diamond Publications</li>
-            	<li>Posters/Prints</li>
-            	<li>Video/Audio</li>
-          </ul>
-        </div>
--->
-
-				<div class="col-md-3">
-					{{name}}
-				</div>
-				<div class="col-md-1">
-					{{catalogId}}
-				</div>
-				<div class="col-md-1">
-					{{itemId}}
-				</div>
-				<div class="col-md-1">
-					{{orderDate}}
-				</div>
-				<div class="col-md-1">
-					{{price}}
-				</div>
-				<div class="col-md-1">
-					{{#bs-form formLayout="inline" action="getQty"}}
-						{{bs-input type="text" size=5 value=qty }}
-					{{/bs-form}}
-				</div>
-				<div class="col-md-1">
-					<button type="button" class="btn btn-default" {{action 'addItem'}}>
-						Order
-					</button>
-				</div>
+		<div class="col-md-3">
+			{{name}}
+		</div>
+		<div class="col-md-1">
+			{{catalogId}}
+		</div>
+		<div class="col-md-1">
+			{{itemId}}
+		</div>
+		<div class="col-md-2">
+			{{orderDate}}
+		</div>
+		<div class="col-md-1">
+			{{price}}
+		</div>
+		<div class="col-md-1">
+			{{#bs-form formLayout="inline"}}
+				{{bs-input type="text" size=5 value=qty }}
+			{{/bs-form}}
+		</div>
+		<div class="col-md-1">
+			<button type="button" class="btn btn-default" {{action 'addItem'}}>
+				Order
+			</button>
+		</div>
 		<div class="col-md-1">
 			{{input type="checkbox" name="reoccuring" checked=reoccuring}}
-
 		</div>
+
 	</div>
 </div>
-
-
 {{/with}}
 
 <!--

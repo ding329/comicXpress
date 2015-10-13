@@ -1,0 +1,40 @@
+
+
+<!--
+{{#each item in orderController.cart}}
+	{{item.name}} <br>
+{{/each}}
+-->
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-1">
+			<b>Catalog Code</b>
+		</div>
+		<div class="col-md-1">
+			<b>Item Code</b>
+		</div>
+		<div class="col-md-1">
+			<b>Discount Code</b>
+		</div>
+		<div class="col-md-1">
+			<b>Quantity</b>
+		</div>
+		<div class="col-md-5">
+			<b>Item Description</b>
+		</div>
+		<div class="col-md-1">
+			<b>Price</b>
+		</div>
+		<div class="col-md-1">
+			<b>Total</b>
+		</div>
+	</div>
+</div>
+
+{{#each item in orderController.cart}}
+	{{edit-cart item=item removeItem="removeItem"}}
+{{/each}}
+
+
+
+

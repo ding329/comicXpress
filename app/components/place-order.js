@@ -10,6 +10,11 @@ var cartCollection = Ember.ArrayProxy.extend(Ember.SortableMixin, {
 export default Ember.Component.extend({
 //	catalog: null,
 //	carts: cartCollection.create(),
+	isComic: function()
+	{
+		var catalog = this.get('catalog');
+		return catalog.get('categoryCode')=='1';
+	},
 	actions:
 	{
 		addItem: function()

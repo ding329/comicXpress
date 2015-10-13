@@ -7,9 +7,9 @@ var Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('order');
-  this.route('editCart');
   this.route('auth');
   this.route('register');
+  this.route('editcart');
 });
 
 export default Router;

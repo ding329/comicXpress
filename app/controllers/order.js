@@ -14,10 +14,24 @@ var catalogCollection = Ember.ArrayProxy.extend(Ember.SortableMixin, {
 	content: [],
 });
 
-var chArry = [1,2,3,4,5,6,7,8,9,10,11,12,13];
+//var chArry = [1,2,3,4,5,6,7,8,9,10,11,12,13];
 
 export default Ember.Controller.extend({
 	cart: cartCollection.create(),
+	chCom:false,
+	chMag:false,
+	chGraphic:false,
+	chNovel:false,
+	chGame:false,
+	chNoveties:false,
+	chApparel:false,
+	chToy:false,
+	chScard:false,
+	chScomic:false,
+	chRetail:false,
+	chDiamond:false,
+	chPoster:false,
+	chVideo:false,
 //	catalogs: catalogCollection,
 //	filteredCatalog: catalogCollection,
 	//filteredCatalog: this.get(catalogs),
@@ -60,49 +74,35 @@ export default Ember.Controller.extend({
 
 	actions: 
 	{
-/*		placeOrder: function(input)
-		{
-			var carts = this.get('carts');
-			var catalogs = this.get('catalogs');
-			var t=this;
-			console.log('Testing:');
-			catalogs.forEach(function(item)
-			{
-				if(item.get('qty') >0)
-				{
-					var tmp= this.store.createRecord('cart',
-					{
-						price: item.get('price'),
-						catalogId: item.get('catalogId'),
-						itemId: item.get('itemId'),
-						qty: item.get('qty'),
-					});
-					carts.pushObject(tmp);
-				}
-			});
-		},
-		*/
+
 		addItem: function(item)
 		{
-	console.log('add item order.js')
-			var cart= this.get('cart')
+			console.log('add item order.js');
+			var cart= this.get('cart');
 			var t= this;
 			if(item.get('qty') >0)
 			{
+				
 				var tmp= t.store.createRecord('cart',
 				{
+					id: item.get('id'),
+					name: item.get('name'),
 					price: item.get('price'),
 					catalogId: item.get('catalogId'),
 					itemId: item.get('itemId'),
+					discountCode: item.get('discountCode'),
 					qty: item.get('qty'),
+					total: item.get('qty') * item.get('price'),
 				});
 				cart.pushObject(tmp);
+
 			}
 		}
 	}
 	
 });
 /*
+
 filteredPhotos: function()
 	{
 		var filter = this.get('searchField');

@@ -1,0 +1,44 @@
+{{#with item}}
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-1">
+			{{catalogId}}
+		</div>
+		<div class="col-md-1">
+			{{itemId}}
+		</div>
+		<div class="col-md-1">
+			{{discountCode}}
+		</div>
+		<div class="col-md-1">
+			{{#bs-form formLayout="inline" action="getQty"}}
+				{{bs-input type="text" size=5 value=qty }}
+			{{/bs-form}}
+		</div>
+		<div class="col-md-5">
+			{{name}}
+		</div>
+		<div class="col-md-1">
+			${{price}}
+		</div>
+		<div class="col-md-1">
+			$<u>{{total}} </u>
+		</div>
+		<div class="col-md-1">
+			<button type="button" class="btn btn-default" {{action 'removeItem'}}>
+				Remove
+			</button>
+		</div>
+	</div>
+</div>
+
+{{/with}}
+
+<!--
+name: DS.attr('string'),
+  price: DS.attr('string'),
+  catalogId: DS.attr('string'),
+  itemId: DS.attr('string'),
+  qty: DS.attr('number'),
+-->
