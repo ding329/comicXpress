@@ -31,6 +31,10 @@ export default Ember.Route.extend({
 			previoustrans.retry();
 		}
 	},
+	setupController: function(controller, model)
+	{
+		controller.set('authController', this.controllerFor('auth'));
+	},
 	actions: {
 		willTransition: function(transition){
 			this.authCheck(transition);

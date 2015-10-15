@@ -13,8 +13,9 @@ export default Ember.Component.extend({
 	isComic: function()
 	{
 		var catalog = this.get('catalog');
+		console.log('iscomic::' + catalog.get('name') + " " + catalog.get('categoryCode'));
 		return catalog.get('categoryCode')=='1';
-	},
+	}.property('categoryCode'),
 	actions:
 	{
 		addItem: function()

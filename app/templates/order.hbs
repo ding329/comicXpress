@@ -17,20 +17,12 @@
 				</button>
 		{{/bs-form}}
 	</div>
+
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-1 sidebar">
 			<ul class="nav nav-sidebar">
 				<li class="active"><h3>Filters</h3> <span class="sr-only">(current)</span></li>
-					<li>
-<!--						{{#bs-form formLayout="inline" action="search"}}
-							{{bs-input type="text" value=SearchField size=18 action="search" placeholder="search"}}
-							<button type="submit" class="btn btn-default">
-								<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-							</button>
-						{{/bs-form}}
--->
-					</li>
 					<li>
 						<label class="checkbox"> {{input type="checkbox" checked=chCom}} Comic </label>
 					</li>
@@ -77,24 +69,17 @@
 
 		</div>
 
-		{{#each catalog in content}}
-			{{place-order catalog=catalog addItem="addItem"}}
-		{{/each}}
+		{{#if filteredCatalogLoaded}}
+			IT MUST BE TRUE!
+			{{#each item in filteredCatalog}}
+				{{item.name}}
+			{{/each}}
+		{{else}}
+			{{#each catalog in content}}
+				{{place-order catalog=catalog addItem="addItem"}}
+			{{/each}}
+		{{/if}}
+
 	</div>
 
-
-	<div class="col-md-1">
-		<button type="button" class="btn btn-default" {{action 'placeOrder' content}}>
-			Order
-		</button>
-	</div>
-<br>
-<!--	
-	{{#if filteredCatalogLoaded}}		
-		inside the if filteredCatalogLoaded
-		{{#each catalog in filteredCatalog}}
-			{{catalog.name}}
-		{{/each}}
-	{{/if}}
--->
 </div>

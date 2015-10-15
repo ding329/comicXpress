@@ -14,8 +14,6 @@ var catalogCollection = Ember.ArrayProxy.extend(Ember.SortableMixin, {
 	content: [],
 });
 
-//var chArry = [1,2,3,4,5,6,7,8,9,10,11,12,13];
-
 export default Ember.Controller.extend({
 	cart: cartCollection.create(),
 	chCom:false,
@@ -34,42 +32,37 @@ export default Ember.Controller.extend({
 	chVideo:false,
 //	catalogs: catalogCollection,
 //	filteredCatalog: catalogCollection,
-	//filteredCatalog: this.get(catalogs),
-//determine if a checkbox has been clicked, call the filter function
 
-/*	watchchCom: function()
+
+	filteredCatalog: function()  //will need to fix later for multiple cases
 	{
-		console.log("woo change");
-		this.send('filteredCatalog'); //might need to provide an input
-;
-	}.observes('chCom', 'chMag','chGraphic','chNovel','chGame','chNoveties','chApparel','chToy', 'chScard', 'chScomic', 'chRetail', 'chDiamond', 'chPoster', 'chVideo'),
-*/	filteredCatalog: function()  //will need to fix later for multiple cases
-	{
+
 		console.log('inside filteredCatalog');
-		var catalogs = this.get(catalogs);
-		var filteredCatalogs = null;
-	/*		if(this.get('chCom'))
-		{
-			console.log('in the if');
-			filterdCatalogs=catalogs.filterby(catalog.get('categoryCode')
+//		this.get('filteredCatalog').content.clear();
+//		this.store.unload('filteredCatalog');
 
-			var filter = '1';
-			var rx= new RegExp(filter, 'gi');
-			return catalogs.filter(function(catalog){
-				return catalog.get('categoryCode').match(rx);
+
+		var regexstr= (this.get('chCom')? '1|':"")+(this.get('chMag')? '2|':"")+(this.get('chGraphic')? '3|':"")+(this.get('chNovel')? '4|':"")+(this.get('chGame')? '5|':"")+(this.get('chNoveties')? '6|':"")+(this.get('chApparel')? '7|':"")+(this.get('chToy')? '8|':"")+(this.get('chScard')? '9|':"")+(this.get('chScomic')? '10|':"")+(this.get('chRetail')? '11|':"")+(this.get('chDiamond')? '12|':"")+(this.get('chPoster')? '13|':"")+(this.get('chVideo')? '14':"");
+		var rx= new RegExp(regexstr, 'gi');
+
+		var entries = this.get('content'); //('catalogs');
+		console.log('Entries is:' + entries + " " + rx);
+	//	this.set('filteredCatalog'),
+			return entries.filter(function(entry) {
+				return entry.get('categoryCode').match(rx);
 			});
-			
-		}
-		else
-		{
-			console.log('failed to get in the if');
-		}
-*/
+	//	console.log('filteredCatalog is' + filteredCatalog);
 	}.observes('chCom', 'chMag','chGraphic','chNovel','chGame','chNoveties','chApparel','chToy', 'chScard', 'chScomic', 'chRetail', 'chDiamond', 'chPoster', 'chVideo'),
 	//property('catalogs.@each'),  //does not like this, might not be needed due to
 
 	filteredCatalogLoaded: function(){
-		return this.get('filteredCatalog').length>0;
+		console.log('inside filteredCatalogLoaded');
+		var t=this;
+		if(t.get('chCom'))
+		{
+			console.log('the length is::' + filteredCatalog.length);
+		}
+		return this.get('filteredCatalog').length >0;
 	}.property('filteredCatalog.length'),
 
 	actions: 
@@ -82,7 +75,6 @@ export default Ember.Controller.extend({
 			var t= this;
 			if(item.get('qty') >0)
 			{
-				
 				var tmp= t.store.createRecord('cart',
 				{
 					id: item.get('id'),
@@ -99,7 +91,6 @@ export default Ember.Controller.extend({
 			}
 		}
 	}
-	
 });
 /*
 

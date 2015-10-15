@@ -17,7 +17,7 @@
 			  {{input type="checkbox" checked=remember}} Remember me
 			</label>
 			<button type="button" class="btn btn-default" {{action 'login'}}>Sign in</button>
-
+			<button type="button" class="btn btn-default" {{action 'logout'}}>Sign Out</button>
 		</form>
 	{{else}}
 		<form class="form-inline">
@@ -29,6 +29,7 @@
 			</div>
 
 			<button type="button" class="btn btn-default" {{action 'login'}}>Sign in</button>
+			<button type="button" class="btn btn-default" {{action 'logout'}}>Sign Out</button>
 		</form>
 		<form class="form-default">
 			<div class="form-group">

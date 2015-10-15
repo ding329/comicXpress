@@ -10,6 +10,7 @@ Router.map(function() {
   this.route('auth');
   this.route('register');
   this.route('editcart');
+  this.route('monthlyorder');
 });
 
 export default Router;
