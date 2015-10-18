@@ -1,10 +1,10 @@
 module.exports = function(app) {
   var express = require('express');
-  var monthlyorderRouter = express.Router();
+  var monthlyordersRouter = express.Router();
 
-  monthlyorderRouter.get('/', function(req, res) {
+  monthlyordersRouter.get('/', function(req, res) {
     res.send({
-      'monthlyorder': [
+      'monthlyorders': [
       {
           id:1,
           name: "TRANSFORMERS MORE THAN MEETS EYE #",
@@ -19,29 +19,29 @@ module.exports = function(app) {
     });
   });
 
-  monthlyorderRouter.post('/', function(req, res) {
+  monthlyordersRouter.post('/', function(req, res) {
     res.status(201).end();
   });
 
-  monthlyorderRouter.get('/:id', function(req, res) {
+  monthlyordersRouter.get('/:id', function(req, res) {
     res.send({
-      'monthlyorder': {
+      'monthlyorders': {
         id: req.params.id
       }
     });
   });
 
-  monthlyorderRouter.put('/:id', function(req, res) {
+  monthlyordersRouter.put('/:id', function(req, res) {
     res.send({
-      'monthlyorder': {
+      'monthlyorders': {
         id: req.params.id
       }
     });
   });
 
-  monthlyorderRouter.delete('/:id', function(req, res) {
+  monthlyordersRouter.delete('/:id', function(req, res) {
     res.status(204).end();
   });
 
-  app.use('/api/monthlyorder', monthlyorderRouter);
+  app.use('/api/monthlyorders', monthlyordersRouter);
 };

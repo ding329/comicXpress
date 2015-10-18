@@ -2,6 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
 	currentTransition: null,
+	authController: null,
 	beforeModel: function(transition){
 		this.authCheck(transition);
 		//will have other stuff here once its connected to restapi

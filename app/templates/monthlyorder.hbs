@@ -1,1 +1,9 @@
-The reoccuring order goes here
+Monthly Order
+
+<div class="container-fluid">
+	<button type="Submit" class="btn btn-default" {{action 'submitReoccuring'}}>Update Monthly Order</button>
+</div>
+
+{{#each item in context}}
+	{{monthly-order item=item removeItem="removeItem"}}
+{{/each}}

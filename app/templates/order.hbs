@@ -1,85 +1,58 @@
-<!--
-<div class="container">
-	{{#bs-form formLayout="inline" action="search"}}
-		{{bs-input type="text" value=SearchField action="search" placeholder="search item description"}}
-		<button type="submit" class="btn btn-default">
-			<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-		</button>
-	{{/bs-form}}
-</div>
--->
-
 <div class="container-fluid">
+	<div class="row row-offcanvas row-offcanvas-left">
 		{{#bs-form formLayout="inline" action="search"}}
 			{{bs-input type="text" value=SearchField size=18 action="search" placeholder="search"}}
 				<button type="submit" class="btn btn-default">
 					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
 				</button>
 		{{/bs-form}}
-	</div>
 
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-md-1 sidebar">
+		<div class="col-md-1 sidebar-offcanvas" id="sidebar">
 			<ul class="nav nav-sidebar">
 				<li class="active"><h3>Filters</h3> <span class="sr-only">(current)</span></li>
-					<li>
-						<label class="checkbox"> {{input type="checkbox" checked=chCom}} Comic </label>
-					</li>
-					<li>
-						<label class="checkbox"> {{input type="checkbox"  checked=chMag}} Magazines </label>
-					</li>
-					<li>
-						<label class="checkbox"> {{input type="checkbox" checked=chGraphic}} Graphic Novels </label>
-					</li>
-					<li>
-						<label class="checkbox"> {{input type="checkbox" checked=chNovel}} Novels </label>
-					</li>
-					<li>
-						<label class="checkbox"> {{input type="checkbox" checked=chGame}} Games </label>
-					</li>
-					<li>
-						<label class="checkbox"> {{input type="checkbox" checked=chNoveties}} Novelties </label>
-					</li>
-					<li>
-						<label class="checkbox"> {{input type="checkbox" checked=chApparel}} Apparel </label>
-					</li>
-					<li>
-						<label class="checkbox"> {{input type="checkbox" checked=chToy}} Toys/Model </label>
-					</li>
-					<li>
-						<label class="checkbox"> {{input type="checkbox" checked=chScard}} Supplies-Cards </label>
-					</li>
-					<li>
-						<label class="checkbox"> {{input type="checkbox" checked=chScomic}} Supplies-Comic </label>
-					</li>
-					<li>
-						<label class="checkbox"> {{input type="checkbox" checked=chRetail}} Retailers Tools </label>
-					</li>
-					<li>
-						<label class="checkbox"> {{input type="checkbox" checked=chDiamond}} Diamond Publications </label>
-					</li>
-					<li>
-						<label class="checkbox"> {{input type="checkbox" checked=chPoster}} Posters/Printers </label>
-					</li>
-					<li>
-						<label class="checkbox"> {{input type="checkbox" checked=chVideo}} Video/Audio </label>
-					</li>
+					<label class="checkbox"> {{input type="checkbox" checked=chCom}} Comic </label>
+					<label class="checkbox"> {{input type="checkbox"  checked=chMag}} Magazines </label>
+					<label class="checkbox"> {{input type="checkbox" checked=chGraphic}} Graphic Novels </label>
+					<label class="checkbox"> {{input type="checkbox" checked=chNovel}} Novels </label>
+					<label class="checkbox"> {{input type="checkbox" checked=chGame}} Games </label>
+					<label class="checkbox"> {{input type="checkbox" checked=chNoveties}} Novelties </label>
+					<label class="checkbox"> {{input type="checkbox" checked=chApparel}} Apparel </label>
+					<label class="checkbox"> {{input type="checkbox" checked=chToy}} Toys/Model </label>
+					<label class="checkbox"> {{input type="checkbox" checked=chScard}} Supplies-Cards </label>
+					<label class="checkbox"> {{input type="checkbox" checked=chScomic}} Supplies-Comic </label>
+					<label class="checkbox"> {{input type="checkbox" checked=chRetail}} Retailers Tools </label>
+					<label class="checkbox"> {{input type="checkbox" checked=chDiamond}} Diamond Publications </label>
+					<label class="checkbox"> {{input type="checkbox" checked=chPoster}} Posters/Printers </label>
+					<label class="checkbox"> {{input type="checkbox" checked=chVideo}} Video/Audio </label>
 			</ul>
-
-		</div>
-
-		{{#if filteredCatalogLoaded}}
-			IT MUST BE TRUE!
-			{{#each item in filteredCatalog}}
-				{{item.name}}
-			{{/each}}
-		{{else}}
-			{{#each catalog in content}}
-				{{place-order catalog=catalog addItem="addItem"}}
-			{{/each}}
-		{{/if}}
-
-	</div>
-
-</div>
+		</div>  <!-- div sidebar -->
+			<div class="col-md-11">
+				<div class="row">
+					<div class="col-md-5">
+						<b>Item Description</b>
+					</div>
+					<div class="col-md-1">
+						<b>Item ID</b>
+					</div>
+					<div class="col-md-2" align="center">
+						<b>Order by Date </b>
+					</div>
+					<div class="col-md-1">
+						<b>Price</b>
+					</div>
+					<div class="col-md-1">
+						<b>Quanity</b>
+					</div>
+					<div class="col-md-1">
+						
+					</div>
+					<div class="col-md-1">
+						<b>Reoccuring</b>
+					</div>
+				</div> <!-- row -->
+				{{#each catalog in filteredCatalog}}
+					{{place-order catalog=catalog addItem="addItem"}}
+				{{/each}}
+			</div>
+	</div> <!-- div class row --> 
+</div>  <!-- div container -->

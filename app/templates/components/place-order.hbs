@@ -1,18 +1,19 @@
-{{#with catalog}}
-
-
-<div class="container-fluid">
+<!--
+<div class="col-md-11">
+-->
 	<div class="row">
-		<div class="col-md-3">
+	{{#with catalog}}
+		<div class="col-md-5">
 			{{name}}
 		</div>
-		<div class="col-md-1">
+<!--		<div class="col-md-1">
 			{{catalogId}}
 		</div>
+-->
 		<div class="col-md-1">
 			{{itemId}}
 		</div>
-		<div class="col-md-2">
+		<div class="col-md-2" align="center" >
 			{{orderDate}}
 		</div>
 		<div class="col-md-1">
@@ -28,61 +29,13 @@
 				Order
 			</button>
 		</div>
-		{{#if "isComic"}}
-		<div class="col-md-1">
-			{{input type="checkbox" name="reoccuring" checked=reoccuring}}
-		</div>
+
+{{/with}}
+		{{#if isComic}}
+			<div class="col-md-1">
+				{{input type="checkbox" name="reoccuring" checked=catalog.reoccuring}}
+			</div>
 		{{/if}}
 	</div>
-</div>
-{{/with}}
 
-<!--
-{{#with post}}
-<div class="panel panel-default">
-	<div class="panel-heading">
-	<button type="button" class="btn btn-primary" {{action 'upvote'}}><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span> {{upvotes}}</button>
-	{{#link-to 'forum.forumpost' post.id}}{{title}}{{/link-to}} (@{{author}})</div>
-	<div class="panel-body">
-		{{content}}<br>
-	</div>
-
-</div>
-{{/with}}
--->
-
-<!--
-<div class="container">
-	{{#each catalog in content}}
-	<div class="row">
-		
-			<div class="col-md-6">
-				{{catalog.name}}
-			</div>	
-			<div class="col-md-1">
-				{{catalog.catalogId}}
-			</div>
-			<div class="col-md-1">
-				{{catalog.itemId}}
-			</div>
-			<div class="col-md-1">
-				{{catalog.orderDate}}
-			</div>
-			<div class="col-md-1">
-				{{catalog.price}}
-
-			</div>
-				<div class="col-md-1">
-					{{input type="checkbox" name="reoccuring" checked=reoccuring}}
-				</div>
-			<div class="col-md-1">
-				{{#bs-form formLayout="inline" action="getQty"}}
-					{{bs-input type="text" value=unknown placehold=0}}
-				{{/bs-form}}
-		</div>
-		
-	</div>
-	{{/each}}
-</div>
--->
 

@@ -38,36 +38,32 @@ export default Ember.Controller.extend({
 	{
 
 		console.log('inside filteredCatalog');
-//		this.get('filteredCatalog').content.clear();
-//		this.store.unload('filteredCatalog');
 
-
-		var regexstr= (this.get('chCom')? '1|':"")+(this.get('chMag')? '2|':"")+(this.get('chGraphic')? '3|':"")+(this.get('chNovel')? '4|':"")+(this.get('chGame')? '5|':"")+(this.get('chNoveties')? '6|':"")+(this.get('chApparel')? '7|':"")+(this.get('chToy')? '8|':"")+(this.get('chScard')? '9|':"")+(this.get('chScomic')? '10|':"")+(this.get('chRetail')? '11|':"")+(this.get('chDiamond')? '12|':"")+(this.get('chPoster')? '13|':"")+(this.get('chVideo')? '14':"");
+		var regexstr= (this.get('chCom')? '^1$|':"")+(this.get('chMag')? '^2|':"")+(this.get('chGraphic')? '^3|':"")+(this.get('chNovel')? '^4|':"")+(this.get('chGame')? '5|':"")+(this.get('chNoveties')? '6|':"")+(this.get('chApparel')? '7|':"")+(this.get('chToy')? '8|':"")+(this.get('chScard')? '9|':"")+(this.get('chScomic')? '10|':"")+(this.get('chRetail')? '11|':"")+(this.get('chDiamond')? '12|':"")+(this.get('chPoster')? '13|':"")+(this.get('chVideo')? '14|':"");
+		regexstr= regexstr.substring(0, regexstr.length-1);
 		var rx= new RegExp(regexstr, 'gi');
 
 		var entries = this.get('content'); //('catalogs');
 		console.log('Entries is:' + entries + " " + rx);
-	//	this.set('filteredCatalog'),
+//		this.set('filteredCatalog'),
 			return entries.filter(function(entry) {
+				console.log(entry.get('categoryCode')+' : ' + entry.get('categoryCode').match(rx));
 				return entry.get('categoryCode').match(rx);
 			});
-	//	console.log('filteredCatalog is' + filteredCatalog);
-	}.observes('chCom', 'chMag','chGraphic','chNovel','chGame','chNoveties','chApparel','chToy', 'chScard', 'chScomic', 'chRetail', 'chDiamond', 'chPoster', 'chVideo'),
+		//console.log('filteredCatalog is' + filteredCatalog);
+	}.property('content', 'chCom', 'chMag','chGraphic','chNovel','chGame','chNoveties','chApparel','chToy', 'chScard', 'chScomic', 'chRetail', 'chDiamond', 'chPoster', 'chVideo'),
 	//property('catalogs.@each'),  //does not like this, might not be needed due to
 
 	filteredCatalogLoaded: function(){
 		console.log('inside filteredCatalogLoaded');
 		var t=this;
-		if(t.get('chCom'))
-		{
-			console.log('the length is::' + filteredCatalog.length);
-		}
+		console.log('the length is::' + this.get('filteredCatalog.length'));
+
 		return this.get('filteredCatalog').length >0;
 	}.property('filteredCatalog.length'),
 
-	actions: 
+	actions:
 	{
-
 		addItem: function(item)
 		{
 			console.log('add item order.js');
