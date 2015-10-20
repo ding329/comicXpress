@@ -4,6 +4,8 @@ Monthly Order
 	<button type="Submit" class="btn btn-default" {{action 'submitReoccuring'}}>Update Monthly Order</button>
 </div>
 
-{{#each item in context}}
+<br>
+
+{{#each item in monthlyorder}}
 	{{monthly-order item=item removeItem="removeItem"}}
 {{/each}}

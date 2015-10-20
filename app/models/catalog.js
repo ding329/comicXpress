@@ -1,5 +1,9 @@
 import DS from 'ember-data';
 
+/*
+This is model for the structure to hold all the merchendise for a given month's preview catalog
+*/
+
 export default DS.Model.extend({
   name: DS.attr('string'),
   price: DS.attr('string'),

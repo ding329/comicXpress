@@ -13,7 +13,17 @@ export default Ember.Controller.extend({
 	//items below do not work right now
 	isPasswordStrong: Ember.computed('password', function(){
 		return (this.get('password').length >8);
-	}) 
+	}),
+
+	actions:
+	{
+		register: function()
+		{
+			/*  
+				perform registration actions with the server
+			*/
+		}
+	}
 
 
 

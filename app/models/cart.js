@@ -7,6 +7,14 @@ export default DS.Model.extend({
   itemId: DS.attr('string'),
   discountCode: DS.attr('string'),
   qty: DS.attr('number'),
-  total: DS.attr('string'),
- 
-});
+//  total: DS.attr('string'),
+  total: function()
+  {
+	var rval=Math.round(this.get('qty') * this.get('price'));
+	if(!(rval >0))
+	{
+		rval='0';
+	}
+	return rval;
+  }.property('price', 'qty')
+});	

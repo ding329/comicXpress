@@ -8,6 +8,9 @@ var app = new EmberApp({
 	}
 });
 
+app.import('bower_components/blob/Blob.js');
+app.import('bower_components/file-saver/FileSaver.js');
+
 // Use `app.import` to add additional libraries to the generated
 // output files.
 //

@@ -1,10 +1,9 @@
 <div class="container-fluid">
 	<div class="row row-offcanvas row-offcanvas-left">
-		{{#bs-form formLayout="inline" action="search"}}
-			{{bs-input type="text" value=SearchField size=18 action="search" placeholder="search"}}
-				<button type="submit" class="btn btn-default">
-					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-				</button>
+		{{#bs-form formLayout="inline" }}
+			{{view "select" content=preivewSelection optionLabelPath="content.name"  value=selectName}}
+			{{bs-input type="text" value=SearchField size=18 placeholder="search"}}
+
 		{{/bs-form}}
 
 		<div class="col-md-1 sidebar-offcanvas" id="sidebar">
