@@ -15,6 +15,7 @@ module.exports = function(app) {
           name: "UNCANNY X-MEN #",
           qty: 30,
       },
+
       ]
     });
   });

@@ -1,19 +1,13 @@
 import Ember from 'ember';
 
-/*
-var cartCollection = Ember.ArrayProxy.extend(Ember.SortableMixin, {
-	sortProperties: ['itemId'],
-	sortAscending: true,
-	content: [],
-});
-*/
+
 export default Ember.Component.extend({
 //	catalog: null,
 //	carts: cartCollection.create(),
 	isComic: function()
 	{
 		var catalog = this.get('catalog');
-		console.log('iscomic::' + catalog.get('name') + " " + catalog.get('categoryCode'));
+	//	console.log('iscomic::' + catalog.get('name') + " " + catalog.get('categoryCode'));
 		return catalog.get('categoryCode')=='1';
 	}.property('categoryCode'),
 	actions:

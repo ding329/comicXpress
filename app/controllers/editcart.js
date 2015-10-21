@@ -13,9 +13,17 @@ export default Ember.Controller.extend({
 		},
 		generateOrderForm: function()
 		{
+			var orderForm ="Catalog Code\t Item Code\t Discount Code\t Quanity\t Item Description\t Price\t total\r\n";
 			var orderController = this.get('orderController');
-			var blob = new Blob([orderController.get('cart')], {type: "text/plain;charset=utf-8"});
-			saveAs(blob, "hello world.txt");
+			var cart= orderController.get('cart');
+			var title = orderController.get('selectName.name') + "_Order";
+//forEach(monthlyItem, 0, reoccuring)
+			cart.forEach(function(item) 
+			{
+				orderForm = orderForm + item.get('catalogId') +"\t " + item.get('itemId') + "\t " + item.get('discountCode') + "\t " + item.get('qty') + "\t" + item.get('name') +"\t "+ item.get('price') + '\t ' + item.get('total') + "\r\n";
+			});
+			var blob = new Blob([orderForm], {type: "text/plain;charset=utf-8"});
+			saveAs(blob, title);
 		},
 	}
 

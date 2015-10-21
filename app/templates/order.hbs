@@ -3,6 +3,7 @@
 		{{#bs-form formLayout="inline" }}
 			{{view "select" content=preivewSelection optionLabelPath="content.name"  value=selectName}}
 			{{bs-input type="text" value=SearchField size=18 placeholder="search"}}
+			<button type="button" class="btn btn-default" {{action 'addMonthlyOrder'}}>Add Reoccuring Order</button>
 
 		{{/bs-form}}
 
@@ -12,16 +13,18 @@
 					<label class="checkbox"> {{input type="checkbox" checked=chCom}} Comic </label>
 					<label class="checkbox"> {{input type="checkbox"  checked=chMag}} Magazines </label>
 					<label class="checkbox"> {{input type="checkbox" checked=chGraphic}} Graphic Novels </label>
-					<label class="checkbox"> {{input type="checkbox" checked=chNovel}} Novels </label>
+					<label class="checkbox"> {{input type="checkbox" checked=chNovel}} Books </label>
 					<label class="checkbox"> {{input type="checkbox" checked=chGame}} Games </label>
-					<label class="checkbox"> {{input type="checkbox" checked=chNoveties}} Novelties </label>
+					<label class="checkbox"> {{input type="checkbox" checked=chCard}} Cards </label>
+					<label class="checkbox"> {{input type="checkbox" checked=chComNoveties}} Comic Novelties </label>
+					<label class="checkbox"> {{input type="checkbox" checked=chNoveties}} Non-Comic Novelties </label>
 					<label class="checkbox"> {{input type="checkbox" checked=chApparel}} Apparel </label>
 					<label class="checkbox"> {{input type="checkbox" checked=chToy}} Toys/Model </label>
 					<label class="checkbox"> {{input type="checkbox" checked=chScard}} Supplies-Cards </label>
 					<label class="checkbox"> {{input type="checkbox" checked=chScomic}} Supplies-Comic </label>
 					<label class="checkbox"> {{input type="checkbox" checked=chRetail}} Retailers Tools </label>
 					<label class="checkbox"> {{input type="checkbox" checked=chDiamond}} Diamond Publications </label>
-					<label class="checkbox"> {{input type="checkbox" checked=chPoster}} Posters/Printers </label>
+					<label class="checkbox"> {{input type="checkbox" checked=chPoster}} Posters </label>
 					<label class="checkbox"> {{input type="checkbox" checked=chVideo}} Video/Audio </label>
 			</ul>
 		</div>  <!-- div sidebar -->
