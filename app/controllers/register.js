@@ -1,30 +1,52 @@
 import Ember from 'ember';
 
-export default Ember.Controller.extend({
+import EmberValidations from 'ember-validations';
 
-	username: '',
-	password: '',
-	storeName: '',
-	email: '',
-	isButtonDisabled: Ember.computed('username', 'storeName', 'password', 'email',function(){
-		return Ember.isEmpty(this.get('username')) || Ember.isEmpty(this.get('storeName')) || Ember.isEmpty(this.get('password')) || Ember.isEmpty(this.get('email'));
-	}),
 
-	//items below do not work right now
-	isPasswordStrong: Ember.computed('password', function(){
-		return (this.get('password').length >8);
-	}),
+//some sources say it should be Mixin
+export default Ember.Controller.extend(Ember.Validations.Mixin, {
+	registration:null,
 
 	actions:
 	{
-		register: function()
+
+	},
+	validations: 
+	{
+		'model.username':
 		{
-			/*  
-				perform registration actions with the server
-			*/
-		}
+			presence: true,
+			length: { minimum: 5 }
+		},
+		'registration.password': 
+		{
+			presence: true,
+			length: { minimum: 8, messages:{tooShort:'Password must be at least 8 characters'}}
+		},
+		'registration.storeName':
+		{
+			presence: true,
+		},
+		'registration.email':
+		{
+			presence: true,
+		},
 	}
 
+
+//	registration:null,
+
+/*	isButtonDisabled: Ember.computed('username', 'storeName', 'password', 'email',function(){
+		return Ember.isEmpty(this.get('username')) || Ember.isEmpty(this.get('storeName')) || Ember.isEmpty(this.get('password')) || Ember.isEmpty(this.get('email'));
+	}),
+*/
+
+/*
+	actions:
+	{
+		
+	}
+*/
 
 
 });

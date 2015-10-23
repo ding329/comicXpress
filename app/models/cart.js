@@ -10,11 +10,11 @@ export default DS.Model.extend({
 //  total: DS.attr('string'),
   total: function()
   {
-	var rval=Math.round(this.get('qty') * this.get('price'));
+	var rval=this.get('qty') * this.get('price');
 	if(!(rval >0))
 	{
 		rval='0';
 	}
-	return rval;
+	return rval.toFixed(2);
   }.property('price', 'qty')
 });	

@@ -1,20 +1,6 @@
-<form class="form-default">
-	<div class="form-group">
-		{{input class="form-control" value=username action="register" placeholder="Username"}}
-	</div>
-	<div class="form-group">
-		{{input class="form-control" value=password action="register" placeholder="Password" type="password"}}
-	</div>
-	<div class="form-group">
-		{{input class="form-control" value=storeName action="register" placeholder="Store Name"}}
-	</div>
-	<div class="form-group">
-		{{input class="form-control" value=email action="register" placeholder="Email Address"}}
-	</div>
-	<button type="button" class="btn btn-default" 
-		disabled={{isButtonDisabled}} 
-		{{action 'register'}}>Register
-	</button>
-</form>
-
-{{outlet}}
+{{#em-form model=registration}}
+	{{em-input property="username" placeholder="Enter a username"}}
+	{{em-input property="password" placeholder="Enter a password" type=password}}
+	{{em-input property="storeName" placeholder="Enter Store Name"}}
+	{{em-input property="email" placeholder="Enter Email"}}
+{{/em-form}}

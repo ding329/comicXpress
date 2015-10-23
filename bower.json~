@@ -14,7 +14,8 @@
     "qunit": "~1.17.1",
     "bootstrap": "~3.3.2",
     "file-saver": "*",
-    "blob": "*",
-    "ember-validations": "http://builds.dockyard.com.s3.amazonaws.com/ember-validations/ember-validations-latest.js"
+    "blob": "*"
+    "ember-validations": "http://builds.dockyard.com.s3.amazonaws.com/ember-validations/ember-validations-latest.js",
+
   }
 }
