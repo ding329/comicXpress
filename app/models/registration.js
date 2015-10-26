@@ -6,9 +6,9 @@ import DS from 'ember-data';
 //import { attr, Model } from "ember-cli-simple-store/model";
 
 export default DS.Model.extend({
-  'username': DS.attr('string'),
+  'username': DS.attr('string', {defaultValue: "bob"}),
   'password': DS.attr('string'),
-  'email': DS.attr('string'),
+  'email': DS.attr('string', {defaultValue: "foo@bar.com"}),
   'storeName': DS.attr('string'),
   //'details': DS.belongsTo('user-detail')
 });

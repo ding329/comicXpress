@@ -1,19 +1,18 @@
 import Ember from 'ember';
 
-
 var cartCollection = Ember.ArrayProxy.extend(Ember.SortableMixin, {
 	sortProperties: ['itemId'],
 	sortAscending: true,
 	content: [],
 });
 
-
+/*
 var catalogCollection = Ember.ArrayProxy.extend(Ember.SortableMixin, {
 	sortProperties: ['itemId'],
 	sortAscending: true,
 	content: [],
 });
-
+*/
 export default Ember.Controller.extend({
 	cart: cartCollection.create(),
 
@@ -67,12 +66,15 @@ export default Ember.Controller.extend({
 		addItem: function(item)
 		{
 			this.set('errorMesg', "");
-			console.log('add item order.js');
+	//		console.log('add item order.js');
 			var cart= this.get('cart');
 			var t= this;
-
+/*
+We do not want duplicates in the cart.  We use the regexp to see if the name is in the cart.  The ^$ prevents X-Men from having 10 hits (exact title)
+*/
 			var rx= new RegExp('^' +item.get('name')+'$', 'gi');
-			var rval= cart.filter(function(entry)
+	//		var rx= new RegExp(item.get('id'), 'gi');
+			var rval= cart.filter(function(entry)  //fi
 			{
 				return entry.get('name').match(rx);
 			});
@@ -80,9 +82,10 @@ export default Ember.Controller.extend({
 	//		console.log('Cart rx is::' + rx + "::rval is::" + rval);
 			if(item.get('qty') >0)
 			{
-//				console.log('In the if');
-				if(rval==0)
+		//	console.log('In the if');
+				if(rval==0) //did not find in cart, put into cart
 				{
+						console.log('tmp name::'+ item.get('name'));
 					var tmp= t.store.createRecord('cart',
 					{
 						id: item.get('id'),
@@ -91,24 +94,35 @@ export default Ember.Controller.extend({
 						catalogId: item.get('catalogId'),
 						itemId: item.get('itemId'),
 						discountCode: item.get('discountCode'),
-						qty: item.get('qty'),
+						qty: Math.floor(item.get('qty')),
 					});
 					cart.pushObject(tmp);
+
 				}
-				if(item.get('reoccuring'))
+				else
+				{
+					//the itme is already in the cart, update the new qty
+					rval.forEach(function(dup)
+					{
+						console.log('Dup::' + dup.get('name'));
+						dup.set('qty', Math.floor(item.get('qty')));
+					});
+				//	rval.set('qty', item.get('qty'));
+				}
+				if(item.get('reoccuring')) //add to monthlyorder
 				{
 					var monthlyController = t.get('monthlyController');
 					var monthlyOrder = monthlyController.get('monthlyorder');
 
 					var ptr = item.get('name').search("#");  //will need the position of the # for the substring
-					var newId = item.get('itemId').substring(3,11); // have to have a unique id, get last one, which should be largest
+					var newId = item.get('itemId'); //.substring(3,11); // have to have a unique id, get last one, which should be largest
 //console.log('newId is::' + newId);
-					rx = new RegExp(item.get('name').substring(0, ptr+1), 'gi');
+					rx = new RegExp(item.get('name').substring(0, ptr+1), 'gi');  //grab "Uncanny X-Men #"
 					var bol=0;
 
-					if(monthlyOrder)  //if monthly order has not been visted this will cause an issue
+					if(monthlyOrder)  //if monthly order has not been visted this will cause an issue, this happens if model has not been loaded (to /monthlyorder)
 					{
-						var bol = monthlyOrder.filter(function(entry){
+						bol = monthlyOrder.filter(function(entry){
 							return entry.get('name').match(rx);
 						});
 					}
@@ -122,7 +136,14 @@ export default Ember.Controller.extend({
 						{
 							id: newId,
 							name: item.get('name').substring(0, ptr+1),
-							qty: item.get('qty'),
+							qty: Math.floor(item.get('qty')),
+						});
+					}
+					else
+					{
+						bol.forEach(function(dup)
+						{
+							dup.set('qty', Math.floor(item.get('qty')));
 						});
 					}
 				}
@@ -142,20 +163,23 @@ export default Ember.Controller.extend({
 			}
 			else
 			{
+	//			console.log('ine the else monthlyorder::' + monthlyorder)
+
 				monthlyorder.forEach(function(item)
 				{
-					var rx = RegExp(item.get('name')+'\\d+$', 'gi');
-					console.log('rx is::' + rx);
+					var rx = new RegExp(item.get('name')+'\\d+$', 'gi');  //prevents ordering of varients which have extra stuff after #\D+
+	//				console.log('in the foreach rx is::' + rx);
 					var entry= catalog.filter(function(catalogItem)
 					{
 						return catalogItem.get('name').match(rx);
 					});
+	//				console.log('entry is ::' + entry)
 					if(entry != 0)
 					{	t.set('errorMesg', "");
 		//				console.log('In the addMonthlyOrder if::'+ entry.get('name') + "::" + entry.get('qty'));
 						entry.forEach(function(merch)
 						{
-							merch.set('qty', item.get('qty'));
+							merch.set('qty', Math.floor(item.get('qty')));
 							t.send('addItem', merch);
 						});
 					}
@@ -169,7 +193,7 @@ export default Ember.Controller.extend({
 			/*
 				insert code to fetech the catalog based off the preview selection
 			*/
-			console.log('The preview catalog is::' + previewSel.name);
+	//		console.log('The preview catalog is::' + previewSel.name);
 		}.property('selectName'),
 
 	}

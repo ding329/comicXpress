@@ -1,10 +1,8 @@
-Monthly Order
 
 <div class="container-fluid">
 	<button type="Submit" class="btn btn-default" {{action 'submitReoccuring'}}>Update Monthly Order</button>
 </div>
 
-<br>
 
 {{#each item in monthlyorder}}
 	{{monthly-order item=item removeItem="removeItem"}}

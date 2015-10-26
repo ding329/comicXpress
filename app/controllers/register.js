@@ -2,21 +2,23 @@ import Ember from 'ember';
 
 import EmberValidations from 'ember-validations';
 
+//export default Ember.Controller.extend(EmberValidations);
+//some sources say it should be Mixin,  author has Ember.Validations.Mixin on his slides
+export default Ember.Controller.extend(EmberValidations, {
 
-//some sources say it should be Mixin
-export default Ember.Controller.extend(Ember.Validations.Mixin, {
-	registration:null,
+	registration: null,
 
 	actions:
 	{
 
 	},
+/*	
 	validations: 
 	{
-		'model.username':
+		'registration.username':
 		{
 			presence: true,
-			length: { minimum: 5 }
+			length: { minimum: 5, message:{tooShort:'should be more than 5 characters'} }
 		},
 		'registration.password': 
 		{
@@ -31,8 +33,9 @@ export default Ember.Controller.extend(Ember.Validations.Mixin, {
 		{
 			presence: true,
 		},
+		'registration.profile': true,
 	}
-
+*/
 
 //	registration:null,
 

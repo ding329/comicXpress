@@ -15,7 +15,7 @@ export default Ember.Component.extend({
 		addItem: function()
 		{
 			var catalog= this.get('catalog');
-			console.log('add item component');
+//		console.log('add item component');
 			//catalog.save(); //for sending to server
 			this.sendAction("addItem", catalog);
 			return true;

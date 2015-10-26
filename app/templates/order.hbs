@@ -3,7 +3,7 @@
 		{{#bs-form formLayout="inline" }}
 			{{view "select" content=preivewSelection optionLabelPath="content.name"  value=selectName}}
 			{{bs-input type="text" value=SearchField size=18 placeholder="search"}}
-			<button type="button" class="btn btn-default" {{action 'addMonthlyOrder'}}>Add Reoccuring Order</button>
+			<button type="button" class="btn btn-default" {{action 'addMonthlyOrder'}}>Place Reoccuring Order</button>
 			<h3>{{errorMesg}}</h3>
 		{{/bs-form}}
 
