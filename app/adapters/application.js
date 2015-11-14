@@ -1,5 +1,4 @@
-import DS from 'ember-data';
+import DRFAdapter from './drf';
 
-export default DS.RESTAdapter.extend({
-	namespace: 'api'
+export default DRFAdapter.extend({
 });
