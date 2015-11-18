@@ -48,7 +48,7 @@ export default Ember.Controller.extend({
 		var rx2 = new RegExp(regexSearch, 'gi');
 
 		var entries = this.get('content').sortBy('itemId'); 
-
+		console.log("entries is::" + entries);
 			return entries.filter(function(entry) {
 				return entry.get('categoryCode').match(rx) && entry.get('name').match(rx2);
 			});

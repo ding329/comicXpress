@@ -15,6 +15,7 @@ export default DS.Model.extend({
   //familyCode: DS.attr('string'),  //potential future action
   orderDate: DS.attr('string'),
   sellDate: DS.attr('string'),
+  page: DS.attr('string'),
   qty: DS.attr('number'), 
   reoccuring: DS.attr('boolean', {defaultValue: false}),
   setLabel: function()
