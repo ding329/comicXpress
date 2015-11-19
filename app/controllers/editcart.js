@@ -30,7 +30,7 @@ export default Ember.Controller.extend(EmberValidations,{
 //forEach(monthlyItem, 0, reoccuring)
 			cart.forEach(function(item) 
 			{
-				orderForm = orderForm + item.get('catalogId') +"\t " + item.get('itemId') + "\t " + item.get('discountCode') + "\t " + item.get('qty') + "\t" + item.get('name') +"\t "+ item.get('price') + '\t ' + item.get('total') + "\r\n";
+				orderForm = orderForm + item.get('catalogid') +"\t " + item.get('itemid') + "\t " + item.get('discountcode') + "\t " + item.get('qty') + "\t" + item.get('name') +"\t "+ item.get('price') + '\t ' + item.get('total') + "\r\n";
 			});
 			var blob = new Blob([orderForm], {type: "text/plain;charset=utf-8"});
 			saveAs(blob, title);

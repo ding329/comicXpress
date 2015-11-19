@@ -47,10 +47,10 @@ export default Ember.Controller.extend({
 
 		var rx2 = new RegExp(regexSearch, 'gi');
 
-		var entries = this.get('content').sortBy('itemId'); 
+		var entries = this.get('content').sortBy('itemid'); 
 		console.log("entries is::" + entries);
 			return entries.filter(function(entry) {
-				return entry.get('categoryCode').match(rx) && entry.get('name').match(rx2);
+				return entry.get('categorycode').match(rx) && entry.get('name').match(rx2);
 			});
 	}.property('SearchField', 'content', 'chCom', 'chMag','chGraphic','chNovel','chGame', 'chCard','chComNoveties','chNoveties','chApparel','chToy', 'chScard', 'chScomic', 'chRetail', 'chDiamond', 'chPoster', 'chVideo'),
 
@@ -91,9 +91,9 @@ We do not want duplicates in the cart.  We use the regexp to see if the name is 
 						id: item.get('id'),
 						name: item.get('name'),
 						price: item.get('price'),
-						catalogId: item.get('catalogId'),
-						itemId: item.get('itemId'),
-						discountCode: item.get('discountCode'),
+						catalogid: item.get('catalogid'),
+						itemid: item.get('itemid'),
+						discountcode: item.get('discountcode'),
 						qty: Math.floor(item.get('qty')),
 					});
 					cart.pushObject(tmp);
@@ -115,7 +115,7 @@ We do not want duplicates in the cart.  We use the regexp to see if the name is 
 					var monthlyOrder = monthlyController.get('monthlyorder');
 
 					var ptr = item.get('name').search("#");  //will need the position of the # for the substring
-					var newId = item.get('itemId'); //.substring(3,11); // have to have a unique id, get last one, which should be largest
+					var newId = item.get('itemid'); //.substring(3,11); // have to have a unique id, get last one, which should be largest
 //console.log('newId is::' + newId);
 					rx = new RegExp(item.get('name').substring(0, ptr+1), 'gi');  //grab "Uncanny X-Men #"
 					var bol=0;

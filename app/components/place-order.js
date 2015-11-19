@@ -8,8 +8,8 @@ export default Ember.Component.extend({
 	{
 		var catalog = this.get('catalog');
 	//	console.log('iscomic::' + catalog.get('name') + " " + catalog.get('categoryCode'));
-		return catalog.get('categoryCode')=='1';
-	}.property('categoryCode'),
+		return catalog.get('categorycode')=='1';
+	}.property('categorycode'),
 	actions:
 	{
 		addItem: function()
