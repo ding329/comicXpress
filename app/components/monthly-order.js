@@ -5,7 +5,7 @@ export default Ember.Component.extend({
 	{
 		removeItem: function()
 		{
-			var item=this.get('item'); 
+			var item=this.get('item');
 			this.sendAction("removeItem", item);
 		},
 	}

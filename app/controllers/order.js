@@ -97,7 +97,6 @@ We do not want duplicates in the cart.  We use the regexp to see if the name is 
 						qty: Math.floor(item.get('qty')),
 					});
 					cart.pushObject(tmp);
-
 				}
 				else
 				{
@@ -115,8 +114,7 @@ We do not want duplicates in the cart.  We use the regexp to see if the name is 
 					var monthlyOrder = monthlyController.get('monthlyorder');
 
 					var ptr = item.get('name').search("#");  //will need the position of the # for the substring
-					var newId = item.get('itemid'); //.substring(3,11); // have to have a unique id, get last one, which should be largest
-//console.log('newId is::' + newId);
+					
 					rx = new RegExp(item.get('name').substring(0, ptr+1), 'gi');  //grab "Uncanny X-Men #"
 					var bol=0;
 
@@ -134,10 +132,10 @@ We do not want duplicates in the cart.  We use the regexp to see if the name is 
 					{
 						var tmp2 = t.store.createRecord('monthlyorder',
 						{
-							id: newId,
 							name: item.get('name').substring(0, ptr+1),
 							qty: Math.floor(item.get('qty')),
 						});
+						tmp2.save();
 					}
 					else
 					{

@@ -14,7 +14,7 @@
         {{#link-to "auth" tagName="li"}}<a href="/auth">Auth</a>{{/link-to}}
   
       </ul>
-      {{#if authController.loggedIn}}
+      {{#if authController.isLoggedIn}}
         <ul class="nav navbar-nav navbar-right">
           <button type="button" class="btn btn-default" {{action 'logout'}}>Sign Out</button>
         </ul>

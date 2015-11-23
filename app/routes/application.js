@@ -14,7 +14,7 @@ export default Ember.Route.extend({
 		var auth = t.controllerFor('auth');
 		var previoustrans = t.get('currentTransition');
 		console.log('User attempting to access: /'+transition.targetName);
-		if(!auth.loggedIn){
+		if(!auth.isLoggedIn){
 			if(transition.targetName == 'register')
 			{
 				//I dont know a better way to do this

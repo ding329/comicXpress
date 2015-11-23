@@ -9,7 +9,10 @@ export default Ember.Controller.extend({
 		{
 //			var reoccuring=this.get('monthlyorder');
 			this.get('monthlyorder').removeObject(item);
-			this.store.deleteRecord(item);
+		//	this.store.deleteRecord(item);
+			item.deleteRecord();
+			item.save();
+//			item.delete();
 		},
 		submitReoccuring: function()
 		{
