@@ -7,12 +7,24 @@ export default Ember.Route.extend({
 		this.authCheck(transition);
 		//will have other stuff here once its connected to restapi
 	},
-	authCheck: function(transition){
+	authCheck: function(transition)
+	{
 		//Method to check user credentials and redirect if necessary
 		console.log('Checking authentication');
 		var t = this;
 		var auth = t.controllerFor('auth');
 		var previoustrans = t.get('currentTransition');
+
+//its guessing time!
+		Ember.$.get('../api/session/', function(data)
+		{
+			if(data.isauthenticated)
+			{
+				auth.set('username', data.username);
+				auth.set('isLoggedIn', true);
+			}
+		});
+
 		console.log('User attempting to access: /'+transition.targetName);
 		if(!auth.isLoggedIn){
 			if(transition.targetName == 'register')

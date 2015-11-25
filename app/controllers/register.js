@@ -6,11 +6,17 @@ import EmberValidations from 'ember-validations';
 //some sources say it should be Mixin,  author has Ember.Validations.Mixin on his slides
 export default Ember.Controller.extend(EmberValidations, {
 
-	registration: null,
+	username: null,
+	password: null,
+	storename: null,
+	email: null,
 
 	actions:
 	{
-
+		register: function()
+		{
+			console.log('it worked');
+		}
 	},
 /*	
 	validations: 

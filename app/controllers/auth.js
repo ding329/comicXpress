@@ -44,7 +44,7 @@ export default Ember.Controller.extend({
 
              //   }
                 controllerObj.transitionToRoute('auth');
-            })
+            });
 
         },
 		goRegister: function(){

@@ -1,7 +1,26 @@
-{{#em-form model=registration action="undefined"}}
-	{{em-input property="username" placeholder="Enter a username"}}
-	{{em-input property="password" placeholder="Enter a password" type=password}}
-	{{em-input property="storeName" placeholder="Enter Store Name"}}
-	{{em-input property="email" placeholder="Enter Email"}}
-{{/em-form}}
 
+
+	<form class="form-inline">
+		<div class="form-group">
+			{{input class="form-control" value=username placeholder="Username"}}
+		</div>
+
+		<div class="form-group">
+			{{input class="form-control" value=password placeholder="Password" type="password"}}
+		</div>
+
+		<div class="form-group">
+			{{input class="form-control" value=storename placeholder="Store Name"}}
+		</div>
+
+		<div class="form-group">
+			{{input class="form-control" value=email placeholder="Email Address"}}
+		</div>
+
+		<button type="button" class="btn btn-default" {{action 'register'}}>Register Account</button>
+	</form>
+
+
+{{#bs-form formLayout="inline" action='addItem'}}
+				{{bs-input type="text" size=5 value=qty }}
+	{{/bs-form}}
