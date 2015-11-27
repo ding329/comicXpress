@@ -3,7 +3,7 @@ import DS from 'ember-data';
 export default DS.Model.extend({
   name: DS.attr('string'),
   price: DS.attr('string'),
-  catalogid: DS.attr('string'),
+  catalogid: DS.attr('number'),
   itemid: DS.attr('string'),
   discountcode: DS.attr('string'),
   qty: DS.attr('number'),

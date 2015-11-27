@@ -48,7 +48,7 @@ export default Ember.Controller.extend({
 		var rx2 = new RegExp(regexSearch, 'gi');
 
 		var entries = this.get('content').sortBy('itemid'); 
-		console.log("entries is::" + entries);
+//		console.log("entries is::" + entries);
 			return entries.filter(function(entry) {
 				return entry.get('categorycode').match(rx) && entry.get('name').match(rx2);
 			});
@@ -72,11 +72,11 @@ export default Ember.Controller.extend({
 /*
 We do not want duplicates in the cart.  We use the regexp to see if the name is in the cart.  The ^$ prevents X-Men from having 10 hits (exact title)
 */
-			var rx= new RegExp('^' +item.get('name')+'$', 'gi');
+			var rx= new RegExp('^' +item.get('itemId')+'$', 'gi');
 	//		var rx= new RegExp(item.get('id'), 'gi');
 			var rval= cart.filter(function(entry)  //fi
 			{
-				return entry.get('name').match(rx);
+				return entry.get('itemId').match(rx);
 			});
 
 	//		console.log('Cart rx is::' + rx + "::rval is::" + rval);
@@ -103,7 +103,7 @@ We do not want duplicates in the cart.  We use the regexp to see if the name is 
 					//the itme is already in the cart, update the new qty
 					rval.forEach(function(dup)
 					{
-						console.log('Dup::' + dup.get('name'));
+			//			console.log('Dup::' + dup.get('name'));
 						dup.set('qty', Math.floor(item.get('qty')));
 					});
 				//	rval.set('qty', item.get('qty'));
@@ -165,7 +165,7 @@ We do not want duplicates in the cart.  We use the regexp to see if the name is 
 
 				monthlyorder.forEach(function(item)
 				{
-					var rx = new RegExp(item.get('name')+'\\d+$', 'gi');  //prevents ordering of varients which have extra stuff after #\D+
+					var rx = new RegExp(item.get('name')+'\\d+(.*\))?$', 'gi');  //prevents ordering of varients which have extra stuff after #\D+
 	//				console.log('in the foreach rx is::' + rx);
 					var entry= catalog.filter(function(catalogItem)
 					{

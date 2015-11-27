@@ -7,7 +7,7 @@ This is model for the structure to hold all the merchendise for a given month's 
 export default DS.Model.extend({
   name: DS.attr('string'),
   price: DS.attr('string'),
-  catalogId: DS.attr('string'),
+  catalogid: DS.attr('number'),
   itemid: DS.attr('string'),
   discountcode: DS.attr('string'),  //potential future action
   categorycode: DS.attr('string'),

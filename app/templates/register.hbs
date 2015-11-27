@@ -1,6 +1,5 @@
 
-
-	<form class="form-inline">
+<h3>{{errorMesg}}</h3>
 		<div class="form-group">
 			{{input class="form-control" value=username placeholder="Username"}}
 		</div>
@@ -17,10 +16,9 @@
 			{{input class="form-control" value=email placeholder="Email Address"}}
 		</div>
 
-		<button type="button" class="btn btn-default" {{action 'register'}}>Register Account</button>
-	</form>
+		<button type="button" class="btn btn-default" 
+			disabled={{isButtonDisabled}}
+			{{action 'register'}}>Register Account
+		</button>
 
 
-{{#bs-form formLayout="inline" action='addItem'}}
-				{{bs-input type="text" size=5 value=qty }}
-	{{/bs-form}}

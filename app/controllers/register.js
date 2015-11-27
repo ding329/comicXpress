@@ -9,14 +9,38 @@ export default Ember.Controller.extend(EmberValidations, {
 	username: null,
 	password: null,
 	storename: null,
+	errorMesg: null,
 	email: null,
+
+	isButtonDisabled: Ember.computed('username', 'storename', 'password', 'email', function(){
+		return Ember.isEmpty(this.get('username')) || Ember.isEmpty(this.get('storename')) || Ember.isEmpty(this.get('password')) || Ember.isEmpty(this.get('email'));
+	}),
 
 	actions:
 	{
 		register: function()
 		{
+
 			console.log('it worked');
-		}
+			var username = this.get('username');
+            var password = this.get('password');
+            var storename = this.get('storename');
+            var email = this.get('email');
+            var t = this;
+            t.set('errorMesg', '');
+          
+        //    var remember = this.get('remember');
+            var data = {
+                'username': username,
+                'password': password,
+                'storename' : storename,
+                'email' : email,
+            };
+        //    var controllerObj = this;
+            Ember.$.post('../api/registration/', data, function(response){
+  				t.set('errorMesg', response.message);
+            });
+		},
 	},
 /*	
 	validations: 
@@ -43,19 +67,7 @@ export default Ember.Controller.extend(EmberValidations, {
 	}
 */
 
-//	registration:null,
 
-/*	isButtonDisabled: Ember.computed('username', 'storeName', 'password', 'email',function(){
-		return Ember.isEmpty(this.get('username')) || Ember.isEmpty(this.get('storeName')) || Ember.isEmpty(this.get('password')) || Ember.isEmpty(this.get('email'));
-	}),
-*/
-
-/*
-	actions:
-	{
-		
-	}
-*/
 
 
 });
