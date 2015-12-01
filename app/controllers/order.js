@@ -165,7 +165,7 @@ We do not want duplicates in the cart.  We use the regexp to see if the name is 
 
 				monthlyorder.forEach(function(item)
 				{
-					var rx = new RegExp(item.get('name')+'\\d+(.*\))?$', 'gi');  //prevents ordering of varients which have extra stuff after #\D+
+					var rx = new RegExp(item.get('name')+'\\d+(\\s+\\(OF\\s+\\))?$', 'gi');  //prevents ordering of varients which have extra stuff after #\D+
 	//				console.log('in the foreach rx is::' + rx);
 					var entry= catalog.filter(function(catalogItem)
 					{

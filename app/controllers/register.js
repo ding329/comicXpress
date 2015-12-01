@@ -39,6 +39,7 @@ export default Ember.Controller.extend(EmberValidations, {
         //    var controllerObj = this;
             Ember.$.post('../api/registration/', data, function(response){
   				t.set('errorMesg', response.message);
+ 
             });
 		},
 	},
