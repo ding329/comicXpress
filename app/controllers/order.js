@@ -72,11 +72,12 @@ export default Ember.Controller.extend({
 /*
 We do not want duplicates in the cart.  We use the regexp to see if the name is in the cart.  The ^$ prevents X-Men from having 10 hits (exact title)
 */
-			var rx= new RegExp('^' +item.get('itemId')+'$', 'gi');
+			console.log('itemid::'+ item.get('itemid') )
+			var rx= new RegExp('^' +item.get('itemid')+'$', 'gi');
 	//		var rx= new RegExp(item.get('id'), 'gi');
 			var rval= cart.filter(function(entry)  //fi
 			{
-				return entry.get('itemId').match(rx);
+				return entry.get('itemid').match(rx);
 			});
 
 	//		console.log('Cart rx is::' + rx + "::rval is::" + rval);
@@ -110,6 +111,7 @@ We do not want duplicates in the cart.  We use the regexp to see if the name is 
 				}
 				if(item.get('reoccuring')) //add to monthlyorder
 				{
+					console.log('in the reoccuring');
 					var monthlyController = t.get('monthlyController');
 					var monthlyOrder = monthlyController.get('monthlyorder');
 
@@ -128,6 +130,7 @@ We do not want duplicates in the cart.  We use the regexp to see if the name is 
 					{
 						t.set('errorMesg', "Note::Either have not received reoccuring orders from server or none exist.  Duplicate Monthly orders may occur when visting /monthlyorder");
 					}
+					console.log('bol is::'+ bol);
 					if(bol==0)  //check if it is already in monthlyorder
 					{
 						var tmp2 = t.store.createRecord('monthlyorder',
@@ -135,6 +138,7 @@ We do not want duplicates in the cart.  We use the regexp to see if the name is 
 							name: item.get('name').substring(0, ptr+1),
 							qty: Math.floor(item.get('qty')),
 						});
+						console.log(tmp2.get('name') + "::"+tmp2.get('qty'));
 						tmp2.save();
 					}
 					else
@@ -142,6 +146,7 @@ We do not want duplicates in the cart.  We use the regexp to see if the name is 
 						bol.forEach(function(dup)
 						{
 							dup.set('qty', Math.floor(item.get('qty')));
+							dup.save();
 						});
 					}
 				}
@@ -165,7 +170,7 @@ We do not want duplicates in the cart.  We use the regexp to see if the name is 
 
 				monthlyorder.forEach(function(item)
 				{
-					var rx = new RegExp(item.get('name')+'\\d+(\\s+\\(OF\\s+\\))?$', 'gi');  //prevents ordering of varients which have extra stuff after #\D+
+					var rx = new RegExp(item.get('name')+'\\d+(\\s+\\(OF\\s+\\d+\\))?$', 'gi');  //prevents ordering of varients which have extra stuff after #\D+
 	//				console.log('in the foreach rx is::' + rx);
 					var entry= catalog.filter(function(catalogItem)
 					{

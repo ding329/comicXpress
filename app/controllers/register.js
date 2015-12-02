@@ -20,15 +20,15 @@ export default Ember.Controller.extend(EmberValidations, {
 	{
 		register: function()
 		{
-
-			console.log('it worked');
 			var username = this.get('username');
             var password = this.get('password');
             var storename = this.get('storename');
             var email = this.get('email');
             var t = this;
             t.set('errorMesg', '');
-          
+
+            console.log('it worked::'+ username);
+
         //    var remember = this.get('remember');
             var data = {
                 'username': username,
@@ -37,6 +37,7 @@ export default Ember.Controller.extend(EmberValidations, {
                 'email' : email,
             };
         //    var controllerObj = this;
+            console.log('before the post');
             Ember.$.post('../api/registration/', data, function(response){
   				t.set('errorMesg', response.message);
  
