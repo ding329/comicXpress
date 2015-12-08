@@ -14,10 +14,8 @@ export default Ember.Controller.extend({
 			item.save();
 //			item.delete();
 		},
-		submitReoccuring: function()
-		{
-			/* this is where we put the code to pass the new reoccuring data to the datbase*/
-		},
+	
+		
 
 	}
 });
